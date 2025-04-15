@@ -31,8 +31,29 @@ export class CompaniesRepositorySequelize implements CompaniesRepository {
 			newCompany.id
 		);
 	}
-	findByNit(nit: string): Promise<Companies | null> {
+	async findByNit(nit: string): Promise<Companies | null> {
 		return CompaniesModel.findOne({ where: { nit } }).then((company) => {
+			if (!company) {
+				return null;
+			}
+			return new Companies(
+				company.commercial_name,
+				company.social_reason,
+				company.nit,
+				company.sector,
+				company.country,
+				company.city,
+				company.address,
+				company.phone,
+				company.number_of_employees,
+				company.number_of_annual_vacancies,
+				company.id
+			);
+		});
+	}
+
+	async findById(id: string): Promise<Companies | null> {
+		return CompaniesModel.findOne({ where: { id } }).then((company) => {
 			if (!company) {
 				return null;
 			}
