@@ -1,6 +1,10 @@
+import "reflect-metadata";
+
 import express, { Application } from "express";
-import HelloRoute from "./infrastructure/http/routes/v1/hello.route";
+// rutas
 import UserRoute from "./infrastructure/http/routes/v1/user.route";
+import CompaniesRouter from "./infrastructure/http/routes/v1/companies.route";
+// middlewares
 import { sequelize } from "./config/database";
 import { errorHandler } from "./infrastructure/http/middlewares/error.middleware";
 
@@ -25,8 +29,8 @@ export default class App {
 	}
 
 	private initializeRoutes(): void {
-		this.app.use("/api/v1", HelloRoute);
 		this.app.use("/api/v1/users", UserRoute);
+		this.app.use("/api/v1/companies", CompaniesRouter);
 	}
 	private initializeErrorHandling(): void {
 		this.app.use(errorHandler);
