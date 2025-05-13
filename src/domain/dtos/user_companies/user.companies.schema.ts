@@ -26,17 +26,17 @@ export const createUserCompaniesSchema = Joi.object({
 		"string.base": "La contraseña debe ser un texto.",
 		"any.required": "La contraseña es obligatoria.",
 	}),
-	status: Joi.string().valid("ACTIVO", "PENDIENTE", "RECHAZADO").required().messages({
+	status: Joi.string().valid("ACTIVO", "PENDIENTE", "RECHAZADO").optional().messages({
 		"string.base": "El estado debe ser un texto.",
 		"any.required": "El estado es obligatorio.",
 		"any.only": 'El estado debe ser uno de los siguientes valores: "ACTIVO", "PENDIENTE", "RECHAZADO".',
 		"string.empty": "El estado no puede estar vacío.",
 	}),
-	company_id: Joi.string().required().messages({
+	company_id: Joi.string().optional().messages({
 		"string.base": "El ID de la empresa debe ser un texto.",
 		"any.required": "El ID de la empresa es obligatorio.",
 	}),
-	id_role: Joi.string().required().messages({
+	id_role: Joi.string().optional().messages({
 		"string.base": "El rol debe ser un texto.",
 	}),
 });
