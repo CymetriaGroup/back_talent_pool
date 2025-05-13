@@ -1,4 +1,4 @@
-type UserStatus = "ACTIVO" | "PENDIENTE" | "RECHAZADO";
+export type UserStatus = "ACTIVO" | "PENDIENTE" | "RECHAZADO";
 
 export interface UserCompaniesCreateDTO {
 	names: string;
@@ -7,6 +7,6 @@ export interface UserCompaniesCreateDTO {
 	phone: string;
 	password: string;
 	status: UserStatus;
-	company_id: string;
-	id_role: string;
+	company_id?: string;
+	id_role?: string;
 }
