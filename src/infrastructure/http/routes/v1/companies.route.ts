@@ -7,5 +7,6 @@ const router = Router();
 
 const companiesController = container.resolve(CompaniesController);
 router.post("/", withTryCatch(companiesController.createCompanies.bind(companiesController)));
+router.post("/with-user", withTryCatch(companiesController.createCompaniesWithUser.bind(companiesController)));
 
 export default router;
